@@ -1,0 +1,1205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MUN ULTIMATE PRO - WINNER'S EDITION + FITUR PILIH SEMUA WORKING</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: white;
+            color: #333;
+            min-height: 100vh;
+        }
+
+        .app-container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* DASHBOARD SISI KIRI */
+        .dashboard {
+            width: 280px;
+            background-color: white;
+            border-right: 2px solid #e6f0ff;
+            padding: 25px 15px;
+            box-shadow: 2px 0 10px rgba(0,0,0,0.03);
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            overflow-y: auto;
+        }
+
+        .dashboard-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #e6f0ff;
+        }
+
+        .dashboard-header i {
+            font-size: 28px;
+            color: #0066cc;
+        }
+
+        .dashboard-header h2 {
+            color: #0066cc;
+            font-weight: 600;
+            font-size: 22px;
+        }
+
+        /* Language Selector */
+        .language-selector {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            padding: 10px;
+            background: #f0f7ff;
+            border-radius: 10px;
+            justify-content: center;
+        }
+
+        .lang-btn {
+            padding: 5px 15px;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .lang-btn.active {
+            background: #0066cc;
+            color: white;
+        }
+
+        .lang-btn:not(.active) {
+            background: white;
+            color: #0066cc;
+            border: 1px solid #0066cc;
+        }
+
+        .dashboard-menu {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+
+        .dashboard-menu li {
+            margin-bottom: 8px;
+        }
+
+        .dashboard-menu a {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 15px;
+            color: #0066cc;
+            text-decoration: none;
+            border-radius: 12px;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+
+        .dashboard-menu a i {
+            width: 22px;
+            font-size: 18px;
+            color: #0066cc;
+        }
+
+        .dashboard-menu a:hover {
+            background-color: #e6f0ff;
+            color: #004999;
+        }
+
+        .dashboard-menu a.active {
+            background-color: #0066cc;
+            color: white;
+        }
+
+        .dashboard-menu a.active i {
+            color: white;
+        }
+
+        .owner-info {
+            background: linear-gradient(135deg, #f5f9ff, #e6f0ff);
+            border-radius: 16px;
+            padding: 20px 15px;
+            margin-top: 20px;
+            border: 1px solid #cce4ff;
+        }
+
+        .owner-info h3 {
+            color: #0066cc;
+            font-size: 16px;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .owner-info h3 i {
+            color: #ffd700;
+            font-size: 18px;
+        }
+
+        .owner-detail {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 15px;
+        }
+
+        .owner-avatar {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #0066cc, #004999);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .owner-text {
+            flex: 1;
+        }
+
+        .owner-text p {
+            color: #0066cc;
+            font-weight: 600;
+            margin-bottom: 3px;
+        }
+
+        .owner-text span {
+            color: #666;
+            font-size: 12px;
+        }
+
+        .star-rating {
+            color: #ffd700;
+            font-size: 14px;
+            letter-spacing: 2px;
+        }
+
+        .main-content {
+            flex: 1;
+            padding: 30px 40px;
+            background-color: white;
+            overflow-y: auto;
+        }
+
+        .welcome-section {
+            margin-bottom: 35px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+        .welcome-section h1 {
+            color: black;
+            font-size: 32px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .welcome-section h1 i {
+            color: #0066cc;
+            margin-right: 10px;
+        }
+
+        .welcome-section p {
+            color: #555;
+            font-size: 16px;
+        }
+
+        .welcome-section .highlight {
+            color: #0066cc;
+            font-weight: 600;
+        }
+
+        .award-cards {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-bottom: 35px;
+        }
+
+        .award-card {
+            background: linear-gradient(145deg, #fafafa, #ffffff);
+            border: 1px solid #eaeaea;
+            border-radius: 16px;
+            padding: 20px 15px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+            transition: transform 0.3s;
+        }
+
+        .award-card:hover {
+            transform: translateY(-5px);
+            border-color: #0066cc;
+        }
+
+        .award-icon {
+            width: 60px;
+            height: 60px;
+            background: #e6f0ff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+        }
+
+        .award-icon i {
+            font-size: 28px;
+            color: #0066cc;
+        }
+
+        .award-card h3 {
+            color: black;
+            font-size: 16px;
+            margin-bottom: 8px;
+        }
+
+        .award-card p {
+            color: #666;
+            font-size: 13px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        .feature-card {
+            background: white;
+            border: 1px solid #eaeaea;
+            border-radius: 20px;
+            padding: 25px 20px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.02);
+        }
+
+        .feature-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+        .feature-header i {
+            font-size: 24px;
+            color: #0066cc;
+        }
+
+        .feature-header h2 {
+            color: black;
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: black;
+            font-weight: 500;
+            font-size: 13px;
+        }
+
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            font-size: 14px;
+            color: black;
+            transition: all 0.3s;
+        }
+
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: #0066cc;
+            box-shadow: 0 0 0 3px rgba(0,102,204,0.1);
+        }
+
+        .btn {
+            background: #0066cc;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+
+        .btn:hover {
+            background: #004999;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,102,204,0.2);
+        }
+
+        .btn-success {
+            background: #28a745;
+        }
+
+        .btn-success:hover {
+            background: #218838;
+        }
+
+        .btn-danger {
+            background: #dc3545;
+        }
+
+        .btn-danger:hover {
+            background: #c82333;
+        }
+
+        .btn-warning {
+            background: #ffc107;
+            color: black;
+        }
+
+        .btn-warning:hover {
+            background: #e0a800;
+        }
+
+        .btn-info {
+            background: #17a2b8;
+        }
+
+        .btn-info:hover {
+            background: #138496;
+        }
+
+        .output-box {
+            background: #fafafa;
+            border: 1px solid #eaeaea;
+            border-radius: 12px;
+            padding: 15px;
+            margin-top: 20px;
+            max-height: 250px;
+            overflow-y: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+            color: black;
+            white-space: pre-wrap;
+        }
+
+        .country-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+            max-height: 300px;
+            overflow-y: auto;
+            padding: 10px;
+            border: 1px solid #eee;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            background: #f9f9f9;
+        }
+
+        .country-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            padding: 5px;
+            font-size: 12px;
+            color: black;
+            background: white;
+            border-radius: 5px;
+            border: 1px solid #eee;
+        }
+
+        .country-item input[type="checkbox"] {
+            width: auto;
+            margin-right: 3px;
+            cursor: pointer;
+        }
+
+        .select-all-bar {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+            padding: 10px;
+            background: #e6f0ff;
+            border-radius: 8px;
+            align-items: center;
+        }
+
+        .select-all-bar button {
+            width: auto;
+            padding: 8px 15px;
+            margin: 0;
+        }
+
+        .vote-controls {
+            display: flex;
+            gap: 10px;
+            margin: 15px 0;
+        }
+
+        .vote-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 10px;
+            margin: 15px 0;
+        }
+
+        .stat-card {
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .stat-for {
+            background: #d4edda;
+            border: 1px solid #28a745;
+            color: #155724;
+        }
+
+        .stat-against {
+            background: #f8d7da;
+            border: 1px solid #dc3545;
+            color: #721c24;
+        }
+
+        .stat-abstain {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            color: #856404;
+        }
+
+        .voted-badge {
+            background: #28a745;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 10px;
+            margin-left: 5px;
+        }
+
+        .status-badge {
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 10px;
+            margin-left: 5px;
+        }
+
+        .status-present {
+            background: #17a2b8;
+            color: white;
+        }
+
+        .status-voting {
+            background: #dc3545;
+            color: white;
+        }
+
+        @media (max-width: 1200px) {
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .award-cards {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .app-container {
+                flex-direction: column;
+            }
+            .dashboard {
+                width: 100%;
+                height: auto;
+                position: relative;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <!-- DASHBOARD SISI KIRI -->
+        <div class="dashboard">
+            <div class="dashboard-header">
+                <i class="fas fa-globe-asia"></i>
+                <h2>MUN Pro Dashboard</h2>
+            </div>
+
+            <!-- Language Selector -->
+            <div class="language-selector">
+                <button class="lang-btn active" onclick="setLanguage('id')" id="lang-id">🇮🇩 Indonesia</button>
+                <button class="lang-btn" onclick="setLanguage('en')" id="lang-en">🇬🇧 English</button>
+            </div>
+
+            <ul class="dashboard-menu">
+                <li><a href="#" onclick="showMainMenu('home'); return false;" class="active"><i class="fas fa-home"></i> <span data-id="Beranda" data-en="Home">Beranda</span></a></li>
+                <li><a href="#" onclick="showMainMenu('speech'); return false;"><i class="fas fa-microphone-alt"></i> <span data-id="Speech Generator" data-en="Speech Generator">Speech Generator</span></a></li>
+                <li><a href="#" onclick="showMainMenu('caucus'); return false;"><i class="fas fa-comments"></i> <span data-id="Caucus Generator" data-en="Caucus Generator">Caucus Generator</span></a></li>
+                <li><a href="#" onclick="showMainMenu('resolution'); return false;"><i class="fas fa-file-alt"></i> <span data-id="Draft Resolution" data-en="Draft Resolution">Draft Resolution</span></a></li>
+                <li><a href="#" onclick="showMainMenu('position'); return false;"><i class="fas fa-pen-fancy"></i> <span data-id="Position Paper" data-en="Position Paper">Position Paper</span></a></li>
+                <li><a href="#" onclick="showMainMenu('voting'); return false;"><i class="fas fa-vote-yea"></i> <span data-id="Voting System" data-en="Voting System">Voting System</span></a></li>
+                <li><a href="#" onclick="showMainMenu('delegates'); return false;"><i class="fas fa-users"></i> <span data-id="Delegates Management" data-en="Delegates Management">Delegates Management</span></a></li>
+                <li><a href="#" onclick="showMainMenu('unesco'); return false;"><i class="fas fa-unesco"></i> <span data-id="UNESCO Council" data-en="UNESCO Council">UNESCO Council</span></a></li>
+                <li><a href="#" onclick="showMainMenu('tips'); return false;"><i class="fas fa-trophy"></i> <span data-id="Tips Menang Award" data-en="Winning Tips">Tips Menang Award</span></a></li>
+            </ul>
+
+            <div class="owner-info">
+                <h3><i class="fas fa-star"></i> <span data-id="Informasi Owner" data-en="Owner Information">Informasi Owner</span> <i class="fas fa-star"></i></h3>
+                <div class="owner-detail">
+                    <div class="owner-avatar">B</div>
+                    <div class="owner-text">
+                        <p>Bintang</p>
+                        <span data-id="Creator & Developer" data-en="Creator & Developer">Creator & Developer</span>
+                    </div>
+                </div>
+                <div class="star-rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <p style="color: #0066cc; font-size: 12px; margin-top: 10px;"><i class="fas fa-code"></i> Noxa Core v3.0</p>
+                <p style="color: #0066cc; font-size: 12px; margin-top: 5px;"><i class="fas fa-check-circle"></i> <span data-id="Fitur Pilih Semua WORKING" data-en="Select All Feature WORKING">Fitur Pilih Semua WORKING</span></p>
+            </div>
+        </div>
+
+        <!-- KONTEN UTAMA -->
+        <div class="main-content" id="main-content">
+            <div class="welcome-section">
+                <h1><i class="fas fa-hand-wave"></i> <span data-id="Selamat Datang, Delegate!" data-en="Welcome, Delegate!">Selamat Datang, Delegate!</span></h1>
+                <p><span data-id="Persiapkan dirimu untuk menjadi" data-en="Prepare yourself to become">Persiapkan dirimu untuk menjadi</span> <span class="highlight" data-id="Best Delegate, Outstanding Delegate, Most Interactive Delegate, dan Best Position Paper" data-en="Best Delegate, Outstanding Delegate, Most Interactive Delegate, and Best Position Paper">Best Delegate, Outstanding Delegate, Most Interactive Delegate, dan Best Position Paper</span> <span data-id="dengan tools lengkap berikut" data-en="with these complete tools">dengan tools lengkap berikut</span>.</p>
+            </div>
+
+            <div class="award-cards">
+                <div class="award-card">
+                    <div class="award-icon"><i class="fas fa-crown"></i></div>
+                    <h3 data-id="Best Delegate" data-en="Best Delegate">Best Delegate</h3>
+                    <p data-id="Penguasaan prosedur, negosiasi kuat, dan kepemimpinan" data-en="Procedure mastery, strong negotiation, and leadership">Penguasaan prosedur, negosiasi kuat, dan kepemimpinan</p>
+                </div>
+                <div class="award-card">
+                    <div class="award-icon"><i class="fas fa-medal"></i></div>
+                    <h3 data-id="Outstanding Delegate" data-en="Outstanding Delegate">Outstanding Delegate</h3>
+                    <p data-id="Kontribusi signifikan dan kualitas debat tinggi" data-en="Significant contribution and high debate quality">Kontribusi signifikan dan kualitas debat tinggi</p>
+                </div>
+                <div class="award-card">
+                    <div class="award-icon"><i class="fas fa-handshake"></i></div>
+                    <h3 data-id="Most Interactive" data-en="Most Interactive">Most Interactive</h3>
+                    <p data-id="Aktif dalam caucus, kolaborasi, dan diplomasi" data-en="Active in caucus, collaboration, and diplomacy">Aktif dalam caucus, kolaborasi, dan diplomasi</p>
+                </div>
+                <div class="award-card">
+                    <div class="award-icon"><i class="fas fa-scroll"></i></div>
+                    <h3 data-id="Best Position Paper" data-en="Best Position Paper">Best Position Paper</h3>
+                    <p data-id="Analisis mendalam, solusi realistis, format sempurna" data-en="Deep analysis, realistic solutions, perfect format">Analisis mendalam, solusi realistis, format sempurna</p>
+                </div>
+            </div>
+
+            <div class="features-grid" id="features-grid">
+                <!-- Speech Generator Card -->
+                <div class="feature-card" id="speech-card">
+                    <div class="feature-header">
+                        <i class="fas fa-microphone-alt"></i>
+                        <h2 data-id="Speech Generator Pro" data-en="Speech Generator Pro">Speech Generator Pro</h2>
+                    </div>
+                    <div class="form-group">
+                        <label data-id="Negara/Delegasi" data-en="Country/Delegate">Negara/Delegasi</label>
+                        <input type="text" id="speech-country" placeholder="Contoh: Indonesia" value="Indonesia">
+                    </div>
+                    <div class="form-group">
+                        <label data-id="Chamber/Council" data-en="Chamber/Council">Chamber/Council</label>
+                        <select id="speech-council">
+                            <option value="General Assembly (GA)">General Assembly (GA)</option>
+                            <option value="Security Council (SC)">Security Council (SC)</option>
+                            <option value="ECOSOC">ECOSOC</option>
+                            <option value="Human Rights Council">Human Rights Council</option>
+                            <option value="UNESCO" selected>UNESCO</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label data-id="Topik" data-en="Topic">Topik</label>
+                        <input type="text" id="speech-topic" value="Preserving Dying Languages">
+                    </div>
+                    <button class="btn" onclick="generateSpeech()"><i class="fas fa-magic"></i> <span data-id="Generate Speech" data-en="Generate Speech">Generate Speech</span></button>
+                    <div class="output-box" id="speech-output">Speech akan muncul di sini...</div>
+                </div>
+
+                <!-- Caucus Generator Card -->
+                <div class="feature-card">
+                    <div class="feature-header">
+                        <i class="fas fa-comments"></i>
+                        <h2 data-id="Caucus Generator" data-en="Caucus Generator">Caucus Generator</h2>
+                    </div>
+                    <div class="form-group">
+                        <label data-id="Jenis Caucus" data-en="Caucus Type">Jenis Caucus</label>
+                        <select id="caucus-type">
+                            <option value="moderated" data-id="Moderated Caucus" data-en="Moderated Caucus">Moderated Caucus</option>
+                            <option value="unmoderated" data-id="Unmoderated Caucus" data-en="Unmoderated Caucus">Unmoderated Caucus</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label data-id="Delegasi Pengusul" data-en="Proposing Delegate">Delegasi Pengusul</label>
+                        <input type="text" id="caucus-country" value="Indonesia">
+                    </div>
+                    <div class="form-group">
+                        <label data-id="Topik Caucus" data-en="Caucus Topic">Topik Caucus</label>
+                        <input type="text" id="caucus-topic" value="Preserving Dying Languages">
+                    </div>
+                    <button class="btn" onclick="generateCaucus()"><i class="fas fa-comment-dots"></i> <span data-id="Generate Caucus" data-en="Generate Caucus">Generate Caucus</span></button>
+                    <div class="output-box" id="caucus-output">Caucus akan muncul di sini...</div>
+                </div>
+
+                <!-- Resolution Generator Card -->
+                <div class="feature-card">
+                    <div class="feature-header">
+                        <i class="fas fa-file-alt"></i>
+                        <h2 data-id="Draft Resolution" data-en="Draft Resolution">Draft Resolution</h2>
+                    </div>
+                    <div class="form-group">
+                        <label data-id="Sponsor Utama" data-en="Main Sponsor">Sponsor Utama</label>
+                        <input type="text" id="res-sponsor" value="Indonesia">
+                    </div>
+                    <div class="form-group">
+                        <label data-id="Co-Sponsors" data-en="Co-Sponsors">Co-Sponsors</label>
+                        <input type="text" id="res-cosponsors" value="Malaysia, Singapore, Thailand">
+                    </div>
+                    <div class="form-group">
+                        <label data-id="Topik" data-en="Topic">Topik</label>
+                        <input type="text" id="res-topic" value="Preservation of Cultural Heritage">
+                    </div>
+                    <button class="btn" onclick="generateResolution()"><i class="fas fa-file-signature"></i> <span data-id="Generate Resolution" data-en="Generate Resolution">Generate Resolution</span></button>
+                    <div class="output-box" id="resolution-output">Draft Resolution akan muncul...</div>
+                </div>
+
+                <!-- Position Paper Card -->
+                <div class="feature-card">
+                    <div class="feature-header">
+                        <i class="fas fa-pen-fancy"></i>
+                        <h2 data-id="Position Paper" data-en="Position Paper">Position Paper</h2>
+                    </div>
+                    <div class="form-group">
+                        <label data-id="Negara" data-en="Country">Negara</label>
+                        <input type="text" id="pp-country" value="Indonesia">
+                    </div>
+                    <div class="form-group">
+                        <label data-id="Committee" data-en="Committee">Committee</label>
+                        <select id="pp-committee">
+                            <option value="UNESCO" selected>UNESCO</option>
+                            <option value="UNGA">UNGA</option>
+                            <option value="UNSC">UNSC</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label data-id="Topik" data-en="Topic">Topik</label>
+                        <input type="text" id="pp-topic" value="Preserving Dying Languages">
+                    </div>
+                    <button class="btn" onclick="generatePositionPaper()"><i class="fas fa-scroll"></i> <span data-id="Generate Position Paper" data-en="Generate Position Paper">Generate Position Paper</span></button>
+                    <div class="output-box" id="pp-output">Position Paper akan muncul...</div>
+                </div>
+
+                <!-- VOTING SYSTEM CARD - DENGAN FITUR PILIH SEMUA -->
+                <div class="feature-card">
+                    <div class="feature-header">
+                        <i class="fas fa-vote-yea"></i>
+                        <h2 data-id="Voting System" data-en="Voting System">Voting System <span style="background: #28a745; color: white; padding: 2px 8px; border-radius: 12px; font-size: 10px;">SELECT ALL WORKING</span></h2>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label data-id="Council" data-en="Council">Council</label>
+                        <select id="vote-council">
+                            <option value="General Assembly">General Assembly</option>
+                            <option value="Security Council">Security Council</option>
+                            <option value="UNESCO" selected>UNESCO</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label data-id="Total Delegasi" data-en="Total Delegates">Total Delegasi</label>
+                        <input type="number" id="total-delegates" value="30" min="1" max="193">
+                    </div>
+                    
+                    <button class="btn btn-success" onclick="initializeVoting()"><i class="fas fa-play"></i> <span data-id="Mulai Sesi Voting" data-en="Start Voting Session">Mulai Sesi Voting</span></button>
+                    
+                    <!-- VOTING AREA -->
+                    <div id="voting-full-area" style="display: none; margin-top: 20px; border-top: 2px solid #0066cc; padding-top: 20px;">
+                        <h3 style="color: #0066cc; margin-bottom: 15px;">🗳️ <span data-id="Voting Session" data-en="Voting Session">Voting Session</span></h3>
+                        
+                        <!-- SELECT ALL FEATURE -->
+                        <div class="select-all-bar">
+                            <button class="btn btn-info" onclick="selectAllVoting()" style="width: auto; flex: 1;"><i class="fas fa-check-double"></i> <span data-id="Pilih Semua Delegasi Aktif" data-en="Select All Active Delegates">Pilih Semua Delegasi Aktif</span></button>
+                            <button class="btn btn-warning" onclick="deselectAllVoting()" style="width: auto; flex: 1;"><i class="fas fa-times"></i> <span data-id="Hapus Semua Pilihan" data-en="Deselect All">Hapus Semua Pilihan</span></button>
+                        </div>
+                        
+                        <!-- Status Delegasi dengan Checkbox -->
+                        <div class="form-group">
+                            <label><span data-id="Status Delegasi (centang untuk beri hak voting)" data-en="Delegate Status (check to give voting rights)">Status Delegasi (centang untuk beri hak voting)</span>:</label>
+                            <div style="display: flex; gap: 10px; margin-bottom: 10px;">
+                                <button class="btn btn-success" style="width: auto; padding: 5px 15px;" onclick="setAllDelegatesStatus('voting')"><i class="fas fa-check"></i> <span data-id="Semua Voting" data-en="All Voting">Semua Voting</span></button>
+                                <button class="btn btn-danger" style="width: auto; padding: 5px 15px;" onclick="setAllDelegatesStatus('present')"><i class="fas fa-times"></i> <span data-id="Semua Present" data-en="All Present">Semua Present</span></button>
+                            </div>
+                        </div>
+                        
+                        <!-- Grid Status Delegasi -->
+                        <div class="country-grid" id="delegate-status-grid" style="max-height: 250px;"></div>
+                        
+                        <!-- Voting Controls -->
+                        <div class="form-group">
+                            <label data-id="Pilih Delegasi untuk Vote:" data-en="Select Delegate to Vote:">Pilih Delegasi untuk Vote:</label>
+                            <select id="voting-country-select" class="form-control" style="width: 100%; padding: 10px; margin-bottom: 10px;">
+                                <option value="">-- <span data-id="Pilih Delegasi" data-en="Select Delegate">Pilih Delegasi</span> --</option>
+                            </select>
+                        </div>
+                        
+                        <div class="vote-controls">
+                            <button class="btn btn-success" style="width: 33%;" onclick="castVote('for')"><i class="fas fa-check"></i> <span data-id="SETUJU" data-en="FOR">SETUJU</span></button>
+                            <button class="btn btn-danger" style="width: 33%;" onclick="castVote('against')"><i class="fas fa-times"></i> <span data-id="TIDAK" data-en="AGAINST">TIDAK</span></button>
+                            <button class="btn btn-warning" style="width: 33%;" onclick="castVote('abstain')"><i class="fas fa-minus"></i> <span data-id="ABSTAIN" data-en="ABSTAIN">ABSTAIN</span></button>
+                        </div>
+                        
+                        <!-- Statistik Voting -->
+                        <div class="vote-stats">
+                            <div class="stat-card stat-for" id="for-count"><span data-id="Setuju:" data-en="For:">Setuju:</span> 0</div>
+                            <div class="stat-card stat-against" id="against-count"><span data-id="Tidak:" data-en="Against:">Tidak:</span> 0</div>
+                            <div class="stat-card stat-abstain" id="abstain-count"><span data-id="Abstain:" data-en="Abstain:">Abstain:</span> 0</div>
+                        </div>
+                        
+                        <!-- Informasi Voting -->
+                        <div style="background: #e6f0ff; padding: 15px; border-radius: 10px; margin: 15px 0;">
+                            <p><strong><span data-id="Total Delegasi:" data-en="Total Delegates:">Total Delegasi:</span></strong> <span id="total-delegates-display">0</span></p>
+                            <p><strong><span data-id="Delegasi dengan Hak Voting:" data-en="Delegates with Voting Rights:">Delegasi dengan Hak Voting:</span></strong> <span id="total-voting">0</span></p>
+                            <p><strong><span data-id="Suara yang Sudah Masuk:" data-en="Votes Cast:">Suara yang Sudah Masuk:</span></strong> <span id="total-voted">0</span></p>
+                            <p><strong><span data-id="Suara Diperlukan untuk Lolos (50%+1):" data-en="Votes Required to Pass (50%+1):">Suara Diperlukan untuk Lolos (50%+1):</span></strong> <span id="required-votes">0</span></p>
+                        </div>
+                        
+                        <!-- Tombol Hitung Hasil -->
+                        <button class="btn btn-info" onclick="calculateVoteResult()"><i class="fas fa-calculator"></i> <span data-id="HITUNG HASIL AKHIR" data-en="CALCULATE FINAL RESULT">HITUNG HASIL AKHIR</span></button>
+                        
+                        <!-- Output Hasil -->
+                        <div class="output-box" id="voting-result-output" style="margin-top: 15px; max-height: 150px;">
+                            <span data-id="Hasil voting akan muncul di sini..." data-en="Voting results will appear here...">Hasil voting akan muncul di sini...</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Tombol Reset -->
+                    <button class="btn" style="margin-top: 10px; background: #6c757d;" onclick="hardResetVoting()"><i class="fas fa-sync-alt"></i> <span data-id="Reset Voting System" data-en="Reset Voting System">Reset Voting System</span></button>
+                </div>
+
+                <!-- UNESCO Council Card -->
+                <div class="feature-card">
+                    <div class="feature-header">
+                        <i class="fas fa-unesco"></i>
+                        <h2 data-id="UNESCO Council" data-en="UNESCO Council">UNESCO Council</h2>
+                    </div>
+                    <div class="form-group">
+                        <label data-id="Topik UNESCO" data-en="UNESCO Topic">Topik UNESCO</label>
+                        <select id="unesco-topic">
+                            <option value="languages" data-id="Pelestarian Bahasa Terancam" data-en="Preserving Dying Languages">Pelestarian Bahasa Terancam</option>
+                            <option value="heritage" data-id="Warisan Budaya Dunia" data-en="World Cultural Heritage">Warisan Budaya Dunia</option>
+                            <option value="education" data-id="Pendidikan Inklusif" data-en="Inclusive Education">Pendidikan Inklusif</option>
+                        </select>
+                    </div>
+                    <button class="btn" onclick="generateUNESCO()"><i class="fas fa-unesco"></i> <span data-id="Generate UNESCO" data-en="Generate UNESCO">Generate UNESCO</span></button>
+                    <div class="output-box" id="unesco-output">Konten UNESCO akan muncul...</div>
+                </div>
+
+                <!-- Tips Card -->
+                <div class="feature-card">
+                    <div class="feature-header">
+                        <i class="fas fa-trophy"></i>
+                        <h2 data-id="Tips Menang Award" data-en="Winning Tips">Tips Menang Award</h2>
+                    </div>
+                    <div class="output-box" style="max-height: 300px;">
+                        <strong>🏆 Best Delegate:</strong> Kuasai prosedur, pimpin blok, speech tegas<br>
+                        <strong>🥈 Outstanding:</strong> Aktif di caucus, kualitas argumen tinggi<br>
+                        <strong>🤝 Most Interactive:</strong> Sering usul motion, kolaborasi<br>
+                        <strong>📜 Best Position Paper:</strong> Analisis mendalam, solusi realistis
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ==================== DATA DAN STATE ====================
+        
+        const countries = [
+            "Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Argentina", "Armenia", "Australia", "Austria",
+            "Bahamas", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium", "Belize", "Benin", "Bhutan",
+            "Bolivia", "Bosnia", "Botswana", "Brazil", "Brunei", "Bulgaria", "Burkina Faso", "Burundi",
+            "Cambodia", "Cameroon", "Canada", "Central African Republic", "Chad", "Chile", "China", "Colombia",
+            "Comoros", "Congo", "Costa Rica", "Croatia", "Cuba", "Cyprus", "Czech Republic",
+            "Denmark", "Djibouti", "Dominica", "Dominican Republic",
+            "Ecuador", "Egypt", "El Salvador", "Equatorial Guinea", "Eritrea", "Estonia", "Eswatini", "Ethiopia",
+            "Fiji", "Finland", "France",
+            "Gabon", "Gambia", "Georgia", "Germany", "Ghana", "Greece", "Grenada", "Guatemala", "Guinea", "Guinea-Bissau", "Guyana",
+            "Haiti", "Honduras", "Hungary",
+            "Iceland", "India", "Indonesia", "Iran", "Iraq", "Ireland", "Israel", "Italy",
+            "Jamaica", "Japan", "Jordan",
+            "Kazakhstan", "Kenya", "Kiribati", "Korea North", "Korea South", "Kosovo", "Kuwait", "Kyrgyzstan",
+            "Laos", "Latvia", "Lebanon", "Lesotho", "Liberia", "Libya", "Liechtenstein", "Lithuania", "Luxembourg",
+            "Madagascar", "Malawi", "Malaysia", "Maldives", "Mali", "Malta", "Marshall Islands", "Mauritania", "Mauritius", "Mexico",
+            "Micronesia", "Moldova", "Monaco", "Mongolia", "Montenegro", "Morocco", "Mozambique", "Myanmar",
+            "Namibia", "Nauru", "Nepal", "Netherlands", "New Zealand", "Nicaragua", "Niger", "Nigeria", "North Macedonia", "Norway",
+            "Oman",
+            "Pakistan", "Palau", "Palestine", "Panama", "Papua New Guinea", "Paraguay", "Peru", "Philippines", "Poland", "Portugal",
+            "Qatar",
+            "Romania", "Russia", "Rwanda",
+            "Saint Kitts and Nevis", "Saint Lucia", "Saint Vincent", "Samoa", "San Marino", "Sao Tome", "Saudi Arabia", "Senegal",
+            "Serbia", "Seychelles", "Sierra Leone", "Singapore", "Slovakia", "Slovenia", "Solomon Islands", "Somalia", "South Africa",
+            "South Sudan", "Spain", "Sri Lanka", "Sudan", "Suriname", "Sweden", "Switzerland", "Syria",
+            "Taiwan", "Tajikistan", "Tanzania", "Thailand", "Timor-Leste", "Togo", "Tonga", "Trinidad and Tobago", "Tunisia", "Turkey",
+            "Turkmenistan", "Tuvalu",
+            "Uganda", "Ukraine", "United Arab Emirates", "United Kingdom", "United States", "Uruguay", "Uzbekistan",
+            "Vanuatu", "Vatican City", "Venezuela", "Vietnam",
+            "Yemen",
+            "Zambia", "Zimbabwe"
+        ];
+
+        // STATE VOTING
+        let delegateStatus = {};
+        let votes = { 'for': [], 'against': [], 'abstain': [] };
+        let votedCountries = [];
+        let votingInitialized = false;
+        let currentLanguage = 'id';
+
+        // Initialize semua negara dengan status 'present'
+        function initializeDelegateStatus() {
+            countries.forEach(country => {
+                delegateStatus[country] = 'present';
+            });
+        }
+        initializeDelegateStatus();
+
+        // ==================== FUNGSI BAHASA ====================
+        
+        function setLanguage(lang) {
+            currentLanguage = lang;
+            
+            // Update tombol bahasa
+            document.getElementById('lang-id').classList.toggle('active', lang === 'id');
+            document.getElementById('lang-en').classList.toggle('active', lang === 'en');
+            
+            // Update semua elemen dengan data atribut
+            document.querySelectorAll('[data-id][data-en]').forEach(el => {
+                el.textContent = el.getAttribute(`data-${lang}`);
+            });
+        }
+
+        // ==================== FUNGSI VOTING ====================
+
+        function initializeVoting() {
+            votingInitialized = true;
+            document.getElementById('voting-full-area').style.display = 'block';
+            
+            // Reset votes
+            votes = { 'for': [], 'against': [], 'abstain': [] };
+            votedCountries = [];
+            
+            updateDelegateGrid();
+            updateVotingStats();
+            updateCountrySelect();
+        }
+
+        function hardResetVoting() {
+            initializeDelegateStatus();
+            votes = { 'for': [], 'against': [], 'abstain': [] };
+            votedCountries = [];
+            votingInitialized = false;
+            document.getElementById('voting-full-area').style.display = 'none';
+            document.getElementById('voting-result-output').textContent = currentLanguage === 'id' ? 
+                'Hasil voting akan muncul di sini...' : 'Voting results will appear here...';
+        }
+
+        function updateDelegateGrid() {
+            const grid = document.getElementById('delegate-status-grid');
+            if (!grid) return;
+            
+            grid.innerHTML = '';
+            
+            countries.forEach(country => {
+                const status = delegateStatus[country] || 'present';
+                const hasVoted = votedCountries.includes(country);
+                
+                const div = document.createElement('div');
+                div.className = 'country-item';
+                
+                div.innerHTML = `
+                    <input type="checkbox" ${status === 'voting' ? 'checked' : ''} onchange="toggleDelegateStatus('${country}')">
+                    <span style="flex: 1;" title="${country}">${country.substring(0, 15)}${country.length > 15 ? '...' : ''}</span>
+                    <span class="status-badge ${status === 'voting' ? 'status-voting' : 'status-present'}">${status === 'voting' ? 'V' : 'P'}</span>
+                    ${hasVoted ? '<span class="voted-badge">✓</span>' : ''}
+                `;
+                
+                grid.appendChild(div);
+            });
+            
+            updateVotingStats();
+            updateCountrySelect();
+        }
+
+        function toggleDelegateStatus(country) {
+            if (!votingInitialized) return;
+            
+            // Toggle status
+            delegateStatus[country] = delegateStatus[country] === 'present' ? 'voting' : 'present';
+            
+            // Jika diubah ke present, hapus dari voted jika sudah vote
+            if (delegateStatus[country] === 'present' && votedCountries.includes(country)) {
+                votes['for'] = votes['for'].filter(c => c !== country);
+                votes['against'] = votes['against'].filter(c => c !== country);
+                votes['abstain'] = votes['abstain'].filter(c => c !== country);
+                votedCountries = votedCountries.filter(c => c !== country);
+            }
+            
+            updateDelegateGrid();
+        }
+
+        // ==================== FITUR PILIH SEMUA (WORKING) ====================
+        
+        function selectAllVoting() {
+            if (!votingInitialized) {
+                alert(currentLanguage === 'id' ? 'Harap mulai sesi voting terlebih dahulu!' : 'Please start voting session first!');
+                return;
+            }
+            
+            // Set semua negara yang belum vote menjadi 'voting'
+            countries.forEach(country => {
+                if (!votedCountries.includes(country)) {
+                    delegateStatus[country] = 'voting';
+                }
+            });
+            
+            updateDelegateGrid();
+        }
+
+        function deselectAllVoting() {
+            if (!votingInitialized) return;
+            
+            // Set semua negara yang belum vote menjadi 'present'
+            countries.forEach(country => {
+                if (!votedCountries.includes(country)) {
+                    delegateStatus[country] = 'present';
+                }
+            });
+            
+            updateDelegateGrid();
+        }
+
+        function setAllDelegatesStatus(status) {
+            if (!votingInitialized) return;
+            
+            countries.forEach(country => {
+                // Hanya ubah yang belum vote
+                if (!votedCountries.includes(country)) {
+                    delegateStatus[country] = status;
+                }
+            });
+            
+            updateDelegateGrid();
+        }
+
+        function updateCountrySelect() {
+            const select = document.getElementById('voting-country-select');
+            if (!select) return;
+            
+            select.innerHTML = `<option value="">-- ${currentLanguage === 'id' ? 'Pilih Delegasi' : 'Select Delegate'} --</option>`;
+            
+            const availableCountries = countries.filter(c => 
+                delegateStatus[c] === 'voting' && !votedCountries.includes(c)
+            );
+            
+            availableCountries.forEach(country => {
+                const option = document.createElement('option');
+                option.value = country;
+                option.textContent = country;
+                select.appendChild(option);
+            });
+        }
+
+        function castVote(voteType) {
+            if (!votingInitialized) {
+                alert(currentLanguage === 'id' ? 'Harap mulai sesi voting terlebih dahulu!' : 'Please start voting session first!');
+                return;
+            }
+            
+            const select = document.getElementById('voting-country-select');
+            const country = select.value;
+            
+            if (!country) {
+                alert(currentLanguage === 'id' ? 'Pilih delegasi terlebih dahulu!' : 'Please select a delegate first!');
+                return;
+            }
+            
+            if (delegateStatus[country] !== 'voting') {
+                alert(currentLanguage === 'id' ? 'Delegasi ini tidak memiliki hak voting!' : 'This delegate does not have voting rights!');
+                return;
+            }
+            
+            if (votedCountries.includes(country)) {
+                alert(currentLanguage === 'id' ? 'Delegasi ini sudah melakukan voting!' : 'This delegate has already voted!');
+                return;
+            }
+            
+            votes[voteType].push(country);
+            votedCountries.push(country);
+            
+            updateDelegateGrid();
+            updateVotingStats();
+            
+            select.value = "";
+        }
+
+        function updateVotingStats() {
+            const forCount = votes['for'].length;
+            const againstCount = votes['against'].length;
+            const abstainCount = votes['abstain'].length;
+            const totalVoted = forCount + againstCount + abstainCount;
+            
+            const totalVoting = countries.filter(c => delegateStatus[c] === 'voting').length;
+            const required = Math.ceil(totalVoting / 2);
+            
+            document.getElementById('for-count').textContent = `${currentLanguage === 'id' ? 'Setuju:' : 'For:'} ${forCount}`;
+            document.getElementById('against-count').textContent = `${currentLanguage === 'id' ? 'Tidak:' : 'Against:'} ${againstCount}`;
+            document.getElementById('abstain-count').textContent = `${currentLanguage === 'id' ? 'Abstain:' : 'Abstain:'} ${abstainCount}`;
+            
+            document.getElementById('total-delegates-display').textContent = countries.length;
+            document.getElementById('total-voting').textContent = totalVoting;
+            document.getElementById('total-voted').textContent = totalVoted;
+            document.getElementById('required-votes').textContent = required;
+        }
+
+        function calculateVoteResult() {
+            const forCount = votes['for'].length;
+            const againstCount = votes['against'].length;
+            const abstainCount = votes['abstain'].length;
+            
+            const totalVoting = countries.filter(c => delegateStatus[c] === 'voting').length;
+            const required = Math.ceil(totalVoting / 2);
+            
+            let result = currentLanguage === 'id' ? 
+                "📊 HASIL VOTING FINAL\n======================\n\n" :
+                "📊 FINAL VOTING RESULTS\n======================\n\n";
+            
+            result += `${currentLanguage === 'id' ? '✅ SETUJU:' : '✅ FOR:'} ${forCount}\n`;
+            result += `${currentLanguage === 'id' ? '❌ TIDAK:' : '❌ AGAINST:'} ${againstCount}\n`;
+            result += `⏸️ ${currentLanguage === 'id' ? 'ABSTAIN:' : 'ABSTAIN:'} ${abstainCount}\n\n`;
+            result += `${currentLanguage === 'id' ? 'Total delegasi voting:' : 'Total voting delegates:'} ${totalVoting}\n`;
+            result += `${currentLanguage === 'id' ? 'Suara diperlukan:' : 'Votes required:'} ${required}\n\n`;
+            
+            if (forCount >= required) {
+                result += currentLanguage === 'id' ? 
+                    "🎉 RESOLUSI DISETUJUI!" : 
+                    "🎉 RESOLUTION PASSED!";
+            } else {
+                result += currentLanguage === 'id' ? 
+                    "❌ RESOLUSI DITOLAK" : 
+                    "❌ RESOLUTION FAILED";
+            }
+            
+            document.getElementById('voting-result-output').textContent = result;
+        }
+
+        // ==================== FUNGSI LAINNYA ====================
+
+        function showMainMenu(menu) {
+            document.querySelectorAll('.dashboard-menu a').forEach(a => a.classList.remove('active'));
+            event.target.closest('a').classList.add('active');
+
+            const cards = document.querySelectorAll('.feature-card');
+            const index = {
+                'home': -1,
+                'speech': 0,
+                'caucus': 1,
+                'resolution': 2,
+                'position': 3,
+                'voting': 4,
+                'unesco': 5,
+                'tips': 6
+            }[menu];
+            
+            if (index >= 0 && cards[index]) {
+                cards[index].scrollIntoView({ behavior: 'smooth' });
+            } else if (menu === 'home') {
+                document.querySelector('.welcome-section').scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        function generateSpeech() {
+            const country = document.getElementById('speech-country').value;
+            const council = document.getElementById('speech-council').value;
+            const topic = document.getElementById('speech-topic').value;
+            
+            const speech = `Honorable Chair, distinguished delegates,\n\nThe delegation of ${country} addresses this esteemed ${council} on the crucial matter of ${topic}. We believe that international cooperation is essential in addressing these challenges. Our delegation proposes a comprehensive approach that respects sovereignty while ensuring global stability. We urge all member states to consider the long-term implications of our decisions today. Thank you.`;
+            
+            document.getElementById('speech-output').textContent = speech;
+        }
+
+        function generateCaucus() {
+            const type = document.getElementById('caucus-type').value;
+            const country = document.getElementById('caucus-country').value;
+            const topic = document.getElementById('caucus-topic').value;
+            
+            let output = '';
+            if (type === 'moderated') {
+                output = `🗣️ MODERATED CAUCUS\n\nThe delegate of ${country} motion for a moderated caucus of 15 minutes on the subtopic of "${topic}".\nSpeaking time: 45 seconds per delegate.`;
+            } else {
+                output = `🔄 UNMODERATED CAUCUS\n\nThe delegate of ${country} would like to have an unmoderated caucus about "${topic}" - is it possible, Chair?\n\nDuration: 15 minutes`;
+            }
+            document.getElementById('caucus-output').textContent = output;
+        }
+
+        function generateResolution() {
+            const sponsor = document.getElementById('res-sponsor').value;
+            const cosponsors = document.getElementById('res-cosponsors').value;
+            const topic = document.getElementById('res-topic').value;
+            
+            const resolution = `DRAFT RESOLUTION: ${topic.toUpperCase()}\n\nSponsor: ${sponsor}\nCo-sponsors: ${cosponsors}\n\nThe Committee,\n\nPP1: Recalling all previous resolutions on this matter,\nPP2: Noting with concern the ongoing challenges,\n\n1. Calls upon all member states to implement action plans;\n2. Requests a progress report within 90 days.`;
+            
+            document.getElementById('resolution-output').textContent = resolution;
+        }
+
+        function generatePositionPaper() {
+            const country = document.getElementById('pp-country').value;
+            const committee = document.getElementById('pp-committee').value;
+            const topic = document.getElementById('pp-topic').value;
+            
+            const pp = `POSITION PAPER\n\nCountry: ${country}\nCommittee: ${committee}\nTopic: ${topic}\n\nI. BACKGROUND\n${country} recognizes that ${topic} requires multilateral action.\n\nII. POSITION\nWe support sustainable solutions with international cooperation.\n\nIII. PROPOSALS\n1. Establish monitoring mechanisms\n2. Create capacity-building programs`;
+            
+            document.getElementById('pp-output').textContent = pp;
+        }
+
+        function generateUNESCO() {
+            const topic = document.getElementById('unesco-topic').value;
+            const topics = {
+                'languages': 'Preserving Dying Languages',
+                'heritage': 'World Cultural Heritage',
+                'education': 'Inclusive Education'
+            };
+            
+            const output = `🎤 UNESCO SPEECH\n\nIndonesia addresses UNESCO on ${topics[topic]}. We emphasize the importance of preserving our shared heritage through international cooperation. Let us work together to protect our global cultural diversity.`;
+            
+            document.getElementById('unesco-output').textContent = output;
+        }
+    </script>
+</body>
+</html>
